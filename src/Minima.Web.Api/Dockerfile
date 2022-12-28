@@ -5,16 +5,16 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
-COPY ["src/Mimima.Web.Api/Mimima.Web.Api.csproj", "src/Mimima.Web.Api/"]
-RUN dotnet restore "src/Mimima.Web.Api/Mimima.Web.Api.csproj"
+COPY ["src/Minima.Web.Api/Minima.Web.Api.csproj", "src/Minima.Web.Api/"]
+RUN dotnet restore "src/Minima.Web.Api/Minima.Web.Api.csproj"
 COPY . .
-WORKDIR "/src/src/Mimima.Web.Api"
-RUN dotnet build "Mimima.Web.Api.csproj" -c Release -o /app/build
+WORKDIR "/src/src/Minima.Web.Api"
+RUN dotnet build "Minima.Web.Api.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "Mimima.Web.Api.csproj" -c Release -o /app/publish
+RUN dotnet publish "Minima.Web.Api.csproj" -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "Mimima.Web.Api.dll"]
+ENTRYPOINT ["dotnet", "Minima.Web.Api.dll"]
