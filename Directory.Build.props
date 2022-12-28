@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?><Project>
+  <!-- These properties will be shared for all projects -->
+
+  <PropertyGroup>
+    <Product>Minima</Product>
+    <Copyright>Copyright © Minima 2022</Copyright>
+  </PropertyGroup>
+  <PropertyGroup>
+    <VersionPrefix>1.1.0</VersionPrefix>
+    <VersionSuffix></VersionSuffix>
+    <VersionSuffix Condition=" '$(VersionSuffix)' != '' AND '$(BuildNumber)' != '' ">$(VersionSuffix)-$(BuildNumber)</VersionSuffix>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(MSBuildProjectName.Contains(Tests))' == false">
+    <Authors>Minima</Authors>
+    <Title>Minima build CLI</Title>
+    <Description>Cross-platform  build automation system for Minima projects</Description>
+    <PackageIconUrl>https://github.com/EmreKarahan/minima-sample2/raw/master/NuGet/icon.png</PackageIconUrl>
+    <RepositoryUrl>https://github.com/EmreKarahan/minima-sample2</RepositoryUrl>
+    <PackageVersion>$(VersionPrefix)</PackageVersion>
+    <PackageVersion Condition=" '$(VersionSuffix)' != ''">$(VersionPrefix)-$(VersionSuffix)</PackageVersion>
+    <Description>Cross-platform  build automation system for Minima projects</Description>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+  </PropertyGroup>
+
+</Project>
